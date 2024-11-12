@@ -1,0 +1,165 @@
+<html>
+    <head>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                font-family: sans-serif;
+            }
+            #dangnhap{
+                width: 300px;
+                border: solid 1px black;
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: wheat;
+                display: block;
+            }
+            #dangki{
+                width: 300px;
+                border: solid 1px black;
+                position: absolute;
+                top: 33%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: wheat;
+                display: none;
+            }
+            #dangnhap input{
+                width: 80%;
+                padding: 10px;
+                margin-left: 10%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                background-color: transparent;
+                background-color: #fff;
+            }
+            #dangnhap button{
+                width: 80%;
+                padding: 10px;
+                margin-left: 10%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                background-color: #36b8ff;
+                color: #fff;
+            }
+            #dangnhap button:hover{
+                opacity: 0.8;
+                cursor: pointer;
+            }
+            #dangki input{
+                width: 80%;
+                padding: 10px;
+                margin-left: 10%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                background-color: transparent;
+                background-color: #fff;
+            }
+            #dangki button{
+                width: 80%;
+                padding: 10px;
+                margin-left: 10%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                background-color: #36b8ff;
+                color: #fff;
+            }
+            #dangki button:hover{
+                opacity: 0.8;
+                cursor: pointer;
+            }
+            #dangnhap input:focus, #dangki input:focus {
+                border-color: #36b8ff;
+                box-shadow: 0 0 5px rgba(54, 184, 255, 0.8);
+                background-color: #f0f8ff;
+            }
+            #test{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+        <script>
+            function showRegister(){
+                document.getElementById("dangnhap").style.display = "none";
+                document.getElementById("dangki").style.display = "block";
+            }
+            function showLogin(){
+                document.getElementById("dangki").style.display = "none";
+                document.getElementById("dangnhap").style.display = "block";
+            }
+            function ktDangNhap(){
+                var username = document.forms["dangnhap"]["username"].value;
+                var password = document.forms["dangnhap"]["password"].value;
+                if(username == ""){
+                    alert("Vui lòng nhập tên tài khoản");
+                    document.forms["dangnhap"]["username"].focus();
+                    event.preventDefault();
+                    return false;
+                }
+                if(password == ""){
+                    alert("Vui lòng nhập mật khẩu");
+                    document.forms["dangnhap"]["password"].focus();
+                    event.preventDefault();
+                    return false;
+                }
+                return true;
+            }
+            function ktDangKi(){
+                var username = document.forms["dangki"]["username"].value;
+                var password = document.forms["dangki"]["password"].value;
+                var repassword = document.forms["dangki"]["repassword"].value;
+                var phone = document.forms["dangki"]["phone"].value;
+                if(username == ""){
+                    alert("Vui lòng nhập tên tài khoản");
+                    document.forms["dangki"]["username"].focus();
+                    event.preventDefault();
+                    return false;
+                }
+                if(password == ""){
+                    alert("Vui lòng nhập mật khẩu");
+                    document.forms["dangki"]["password"].focus();
+                    event.preventDefault();
+                    return false;
+                }
+                if(repassword == ""){
+                    alert("Vui lòng nhập lại mật khẩu");
+                    document.forms["dangki"]["repassword"].focus();
+                    event.preventDefault();
+                    return false;
+                }
+                if(phone == ""){
+                    alert("Vui lòng nhập số điện thoại");
+                    document.forms["dangki"]["phone"].focus();
+                    event.preventDefault();
+                    return false;
+                }
+                return true;
+            }
+            
+        </script>
+    </head>
+    <body>
+        <form id="dangnhap">
+            <h2 id="test">Đăng nhập</h2>
+            <input type="text" name="username" placeholder="Tên đăng nhập*">
+            <input type="password" name="password" placeholder="Mật khẩu*">
+            <button type="submit" onclick="ktDangNhap()">Đăng nhập</button>
+            <div id="test">Chưa có tài khoản? <a href="#" onclick="showRegister()"> Đăng kí</a></div>
+        </form>
+        <form id="dangki">
+            <h2 id="test">Đăng kí</h2>
+            <input type="text" name="username" placeholder="Tên đăng nhập*">
+            <input type="password" name="password" placeholder="Mật khẩu*">
+            <input type="password" name="repassword" placeholder="Nhập lại mật khẩu*">
+            <input type="email" name="email" placeholder="Email">
+            <input type="text" name="phone" placeholder="Số điện thoại*">
+            <button type="submit" onclick="ktDangKi()">Đăng kí</button>
+            <div id="test">Đã có tài khoản? <a href="#" onclick="showLogin()"> Đăng nhập</a></div>
+        </form>
+    </body>
+</html>
